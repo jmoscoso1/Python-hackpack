@@ -39,7 +39,7 @@ struct node {
             return sum;
         return left->query(l, r) + right->query(l, r);
     }
-    };
+};
 
 
 
