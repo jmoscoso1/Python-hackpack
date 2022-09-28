@@ -23,7 +23,7 @@ struct node {
             sum = left->sum + right->sum;
         }
     }
-    void update(int i, int value) {
+    void update(int i, ll value) {
         if (lo == hi) {
             sum = value;
             return;
