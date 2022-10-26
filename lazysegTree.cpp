@@ -9,31 +9,31 @@ typedef vector<int> vi;
 const ll MOD = 1e9 + 7;
 
 struct node {
-    int lo, hi, mid;
+	int lo, hi, mid;
 	ll lazy;
-    ll sum;
-    node *left, *right;
-    node(int l, int r, vi &values) {
-        lo = l; hi = r;
-        mid = (l + r) / 2;
+	ll sum;
+	node *left, *right;
+	node(int l, int r, vi &values) {
+		lo = l; hi = r;
+		mid = (l + r) / 2;
 		lazy = 0;
-        if (l == r)
-            sum = values[l];
-        else {
-            left = new node(l, mid, values);
-            right = new node(mid + 1, r, values);
-            sum = left->sum + right->sum;
-        }
-    }
-    void update(int i, ll value) {
-        if (lo == hi) {
-            sum = value;
-            return;
-        }
-        if (i <= mid) left->update(i, value);
-        else right->update(i, value);
-        sum = left->sum + right->sum;
-    }
+		if (l == r)
+			sum = values[l];
+		else {
+			left = new node(l, mid, values);
+			right = new node(mid + 1, r, values);
+			sum = left->sum + right->sum;
+		}
+	}
+	void update(int i, ll value) {
+		if (lo == hi) {
+			sum = value;
+			return;
+		}
+		if (i <= mid) left->update(i, value);
+		else right->update(i, value);
+		sum = left->sum + right->sum;
+	}
 
 	void update(int l, int r, ll value) {
 		if (l > hi || r < lo)
@@ -55,14 +55,14 @@ struct node {
 		lazy = 0;
 	}
 
-    ll query(int l, int r) {
-        if (l > hi || r < lo) 
-            return 0;
+	ll query(int l, int r) {
+		if (l > hi || r < lo) 
+			return 0;
 		push();
-        if (l <= lo && hi <= r) 
-            return sum;
-        return left->query(l, r) + right->query(l, r);
-    }
+		if (l <= lo && hi <= r) 
+			return sum;
+		return left->query(l, r) + right->query(l, r);
+	}
 };
 
 int main() {
