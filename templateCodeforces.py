@@ -10,7 +10,7 @@ xor = randint(10 ** 7, 10**8)
 # https://docs.python.org/3/library/bisect.html
 on = lambda mask, pos: (mask & (1 << pos)) > 0
 lcm = lambda x, y: (x * y) // math.gcd(x,y)
-inf = float('inf')
+INF = float('inf')
 rotate = lambda seq, k: seq[k:] + seq[:k] # O(n)
 input = stdin.readline
 '''
